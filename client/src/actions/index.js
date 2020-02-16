@@ -13,3 +13,10 @@ export const handleStripeToken = token => async dispatch => {
   /* We are dispatching the same FETCH_USER action as we need to update the header component which is being alrready done by the same FETCH_USER action  */
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const surveySubmit = (values, history) => async dispatch => {
+  const res = await axios.post("/api/surveys", values);
+
+  history.push("/surveys");
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
